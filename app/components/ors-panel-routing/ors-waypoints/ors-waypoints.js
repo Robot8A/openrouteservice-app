@@ -1,7 +1,8 @@
 angular
   .module("orsApp.ors-waypoints", [
     "orsApp.ors-waypoint",
-    "orsApp.ors-route-controls"
+    "orsApp.ors-route-controls",
+    "moment-picker"
   ])
   .component("orsWaypoints", {
     templateUrl:
@@ -17,6 +18,7 @@ angular
     controller: [
       "orsSettingsFactory",
       "orsObjectsFactory",
+      "orsCookiesFactory",
       "orsUtilsService",
       "orsRouteService",
       "orsRequestService",
@@ -25,6 +27,7 @@ angular
       function(
         orsSettingsFactory,
         orsObjectsFactory,
+        orsCookiesFactory,
         orsUtilsService,
         orsRouteService,
         orsRequestService,
@@ -39,9 +42,34 @@ angular
             ctrl.waypoints = orsSettingsFactory.initWaypoints(2);
           }
           ctrl.showAdd = true;
-          ctrl.roundTrip =
-            Object.entries(orsSettingsFactory.getActiveOptions().round_trip)
-              .length === 0;
+          ctrl.options = orsSettingsFactory.getActiveOptions();
+          ctrl.roundTrip = Object.entries(ctrl.options.round_trip).length === 0;
+          ctrl.timeInput = ctrl.options.time.value
+            ? ctrl.options.time.value
+            : moment(); // creates date-time object for current time
+          ctrl.locale = moment.locale();
+          ctrl.timeModes = [
+            {
+              text: "TIME_LEAVE_NOW",
+              mode: "departure",
+              id: 0
+            },
+            {
+              text: "TIME_DEPART_AT",
+              mode: "departure",
+              id: 1
+            },
+            {
+              text: "TIME_ARRIVE_BY",
+              mode: "arrival",
+              id: 2
+            }
+          ];
+          ctrl.timeMode =
+            ctrl.timeModes[
+              ctrl.options.time.mode ? 2 : ctrl.options.time.value ? 1 : 0
+            ];
+          ctrl.changeTimeMode();
         };
         // ctrl.$onChanges = function(changesObj) {
         //     console.log(changesObj)
@@ -63,6 +91,19 @@ angular
             ctrl.sortableOptions.disabled = false;
             ctrl.collapseIcon = "fa fa-chevron-down";
           }
+        };
+        ctrl.changeTimeMode = (sendRequest = true) => {
+          ctrl.options.time = {
+            mode: ctrl.timeMode.mode,
+            value:
+              ctrl.timeMode.id === 0
+                ? moment()
+                    .format()
+                    .slice(0, 16)
+                : ctrl.timeInput.format().slice(0, 16), // only pass local time without zone identifier & seconds
+            id: ctrl.timeMode.id
+          };
+          orsSettingsFactory.setActiveOptions(ctrl.options, sendRequest);
         };
         /**
          * Determines whether list of viapoints should be shown.

@@ -102,8 +102,9 @@ span tooltip {
         color: rgba(0, 0, 0, 0.7);
         flex: 1 1 auto;
         padding: 1rem 1rem 0 1rem;
-        -display: flex;
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         i {
             color: #767676;
         }
@@ -451,6 +452,44 @@ button.summary-select {
         border-top: thin solid;
         border-right: thin solid;
 
+    }
+}
+
+.ors-time-option {
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px 10px 10px;
+    align-items: center;
+    align-content: space-between;
+    justify-content: left;
+    .time-mode {
+        flex-basis: 40%;
+        margin: 0 5px 0 3px;
+        select.ui.dropdown {
+            min-width: 0;
+            max-height: 40px;
+            height: 25px;
+            width: max-content;
+            &:focus, &:active, &:hover{
+                border: 1px solid rgba(34, 36, 38, 0.15) !important;
+            }
+        }
+    }
+    .time-icon {
+        flex-basis: 5%;
+        margin: 0 4px 0 3px;
+    }
+    .time-choose {
+        flex-basis: 55%;
+        margin-right: 2px;
+        input{
+            text-align: center;
+            width: max-content;
+            height: 35px;
+            &:focus, &:active {
+                border: 1px solid rgba(34, 36, 38, 0.15) !important;
+            }
+        }
     }
 }
 

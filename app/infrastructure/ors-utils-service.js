@@ -137,6 +137,10 @@ angular.module("orsApp.utils-service", []).factory("orsUtilsService", [
         elevation: lists.profiles[settings.profile.type].elevation,
         options: orsUtilsService.generateOptions(settings)
       };
+      let time = settings.profile.options.time;
+      if (time && Object.entries(time).length !== 0) {
+        payload[time.mode] = time.value;
+      }
       // remove options if empty
       if (
         Object.entries(payload.options).length === 0 &&
@@ -646,6 +650,16 @@ angular.module("orsApp.utils-service", []).factory("orsUtilsService", [
               link += "&" + lists.permalinkKeys["round_" + o] + "=";
               link +=
                 obj[o] >= 1000 ? (obj[o] / 1000).toString() : obj[o].toString();
+            }
+            if (lists.optionList.time[o] && obj.id !== 0) {
+              if (o === "mode" && obj[o] === "arrival") {
+                link += "&" + lists.permalinkKeys["time_" + o] + "=1";
+              }
+              if (o === "value") {
+                let date = moment(obj[o]);
+                link += "&" + lists.permalinkKeys["time_" + o] + "=";
+                link += date.valueOf().toString(36);
+              }
             }
           }
         }

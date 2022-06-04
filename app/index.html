@@ -30,6 +30,8 @@
     <link href="node_modules/leaflet.markercluster/dist/MarkerCluster.css" rel="stylesheet"></link>
     <link href="node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css" rel="stylesheet"></link>
     <link href="node_modules/leaflet-distance-markers/leaflet-distance-marker.css" rel="stylesheet"></link>
+    <link href="node_modules/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet"></link>
+    <link href="node_modules/angular-moment-picker/dist/themes/material-ui.min.css" rel="stylesheet"></link>
     <!-- endbuild -->
     <!-- these scripts remain unbuilt as they contain relative paths -->
     <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet"></link>
@@ -78,9 +80,6 @@
     <div class="ors-main" ng-controller="RootController as root">
         <div class="ors-left">
             <ors-header class="ors-header"></ors-header>
-            <div class="ors-new-client-info">
-                <b><a href="https://maps.openrouteservice.org" target="_blank">> {{('NEW_CLIENT_INFO' | translate)}} <</a></b>
-            </div>
             <ors-sidebar class="ors-sidebar" ors-map="root.myOrsMap"></ors-sidebar>
         </div>
         <ors-map id="map" class="ors-right" ors-map="root.myOrsMap"></ors-map>
@@ -129,6 +128,8 @@
 <script src="node_modules/d3-interpolate/dist/d3-interpolate.min.js"></script>
 <script src="node_modules/d3-color/dist/d3-color.min.js"></script>
 <script src="node_modules/d3-scale-chromatic/dist/d3-scale-chromatic.min.js"></script>
+<script src="node_modules/moment/min/moment-with-locales.js"></script>
+<script src="node_modules/angular-moment-picker/dist/angular-moment-picker.js"></script>
 <script src="node_modules/angular-file-saver/dist/angular-file-saver.bundle.min.js" type="text/javascript"></script>
 <script src="node_modules/angular-tooltips/dist/angular-tooltips.min.js"></script>
 <!-- endbuild -->
