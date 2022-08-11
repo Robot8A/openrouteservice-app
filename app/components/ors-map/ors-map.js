@@ -460,6 +460,7 @@ angular.module("orsApp").directive("orsMap", () => {
           }
         );
         // sign up for API
+        /*
         $scope.signupBox = L.control({
           position: "topleft"
         });
@@ -471,6 +472,7 @@ angular.module("orsApp").directive("orsMap", () => {
           if (!$scope.smallScreen)
             $scope.mapModel.map.addControl($scope.signupBox);
         }, 300000);
+        */
         // brand
         $scope.brand = L.control({
           position: "topleft"

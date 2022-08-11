@@ -58,14 +58,16 @@ angular.module("orsApp").constant("orsNamespaces", {
         format: "image/png",
         attribution:
           '© <a href="http://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a> 2020, <a href="https://sgx.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf">Datenquellen</a>',
-        id: 1
+        id: 1,
+        maxZoom: 20
       },
       grey: {
         layers: "web_grau",
         format: "image/png",
         attribution:
           '© <a href="http://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie</a> 2020, <a href="https://sgx.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf">Datenquellen</a>',
-        id: 2
+        id: 2,
+        maxZoom: 20
       }
     }
   },
@@ -74,7 +76,8 @@ angular.module("orsApp").constant("orsNamespaces", {
     options: {
       attribution:
         'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      id: 3
+      id: 3,
+      maxZoom: 19
     }
   }, //url to OpenCycleMap
   layerOSMCycle: {
@@ -83,7 +86,8 @@ angular.module("orsApp").constant("orsNamespaces", {
     options: {
       attribution:
         'Maps &copy; <a href="http://thunderforest.com/">Thunderforest</a>, Data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      id: 4
+      id: 4,
+      maxZoom: 20
     }
   }, //url to Transport Dark map
   layerOSMDark: {
@@ -92,7 +96,8 @@ angular.module("orsApp").constant("orsNamespaces", {
     options: {
       attribution:
         'Maps &copy; <a href="http://thunderforest.com/">Thunderforest</a>, Data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      id: 5
+      id: 5,
+      maxZoom: 20
     }
   }, //url to Outdoors map
   layerOutdoors: {
@@ -101,19 +106,23 @@ angular.module("orsApp").constant("orsNamespaces", {
     options: {
       attribution:
         'Maps &copy; <a href="http://thunderforest.com/">Thunderforest</a>, Data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      id: 6
+      id: 6,
+      maxZoom: 20
     }
   }, //url to stamen maps
   layerStamen: {
     url: "http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png",
     options: {
       attribution:
-        'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 20
     }
   },
   overlayHillshade: {
     url: "https://korona.geog.uni-heidelberg.de/tiles/asterh/x={x}&y={y}&z={z}",
-    options: {}
+    options: {
+      maxZoom: 20
+    }
   },
   layerWorldImagery: {
     url:
@@ -121,7 +130,8 @@ angular.module("orsApp").constant("orsNamespaces", {
     options: {
       attribution:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-      id: 7
+      id: 7,
+      maxZoom: 20
     }
   },
   layerCycleOsm: {
@@ -129,7 +139,8 @@ angular.module("orsApp").constant("orsNamespaces", {
     options: {
       attribution:
         'Tiles <a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases">CycleOSM</a> latest',
-      id: 8
+      id: 8,
+      maxZoom: 20
     }
   }
 });
