@@ -437,8 +437,8 @@ angular.module("orsApp").directive("orsMap", () => {
                 settings.zoom
               );
             } else {
-              // Heidelberg
-              $scope.orsMap.setView([49.409445, 8.692953], 13);
+              // Vienna
+              $scope.orsMap.setView([48.2083, 16.3725], 13);
               if (orsCookiesFactory.getMapOptions()) {
                 // Welcome box
                 $scope.welcomeMsgBox = L.control({
